@@ -1,0 +1,66 @@
+---
+title: "Burkhart wk 4 HW"
+output: html_document
+date: "2024-06-20"
+---
+
+**Question 1a**
+``` {r,Tomato Data}
+library(dplyr)
+tom_df <- read.csv("tomato.csv")
+tomtr_df <- df <- read.csv("tomato_treatment.csv")
+tomi_df <- read.csv("tomato_issues.csv")
+str(tom_df)
+str(tomtr_df)
+str(tomi_df)
+```
+
+**Question 1b**
+``` {r,Tomato joining}
+tomj_v1 <- left_join(x = tom_df, y = tomtr_df, by = "plant")
+str(tomj_v1)
+```
+**Question 1c**
+``` {r, Tomato filtering + join}
+library(dplyr)
+tomfj_v2 <- dplyr::filter(.data = tomi_df, problem == "none" | problem == "over watered"  )
+tomfj_v3 <- left_join( x = tomfj_v2, y = tomj_v1)
+str(tomfj_v3)
+```
+
+**Question 2a**
+``` {r,Palmer Penguins}
+library(palmerpenguins)
+str(penguins)
+```
+
+
+**Question 2b**
+``` {r,Penguins Data}
+peng_df <- penguins
+str(peng_df)
+```
+Column Name = __species__ Variable type = __Discrete__,
+Column Name = __island__ Variable type = __Discrete__,
+Column Name = __bill_length_mm__ Variable type = __Continuous__,
+Column Name = __bill_depth_mm__ Variable type = __Continuous__,
+Column Name = __flipper_length_mm__ Variable type = __Continuous__,
+Column Name = __body_mass_g__ Variable type = __Continuous__ 
+Column Name = __sex__ Variable type = __Discrete__,
+Column Name __year__ Variable type = __Discrete__ 
+
+**Question 2c**
+```{r question_2c}
+penga_df <- aov(flipper_length_mm ~ sex, data=peng_df)
+summary(penga_df)
+```
+**Explanation** = The hypothesis that sex influences flipper length is statistically significant as the F value is very close to 0, This means we reject the null that sex doesn"t influence flipper length.
+
+
+**Question 2d**
+``` {r, Penguin stats v2}
+pengr_df <- lm(body_mass_g ~ flipper_length_mm, data = peng_df)
+summary(pengr_df)
+```
+
+**Explanation** = The hypothesis that higher body mass equates to longer flipper length is supported by the data with a very low p value of 2e -16 meaning the null is rejected. 
