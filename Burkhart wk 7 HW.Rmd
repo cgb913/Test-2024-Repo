@@ -1,0 +1,44 @@
+---
+title: "Burkhart wk 7 HW"
+output: html_document
+date: "2024-07-15"
+---
+
+# Question 1# 
+
+### 1a###
+``` {r, 1a}
+my_object <- 35 
+my_object2 <- (my_object - 32) * 5/9
+print(my_object2)
+```
+
+### 1b###
+``` {r, 1b}
+my_vector <- c(35,45,55,65,75,85,95)
+for(temps in my_vector) {
+my_object3 <- (temps -32) * 5/9
+print(my_object3)
+}
+```
+
+### 1c###
+``` {r, 1c}
+for(temps in my_vector) {
+my_object3 <- (temps -32) * 5/9 
+if(my_object3 <= 18) {print(paste(temps,"Don't forget a coat bc cold"))}
+else {print(paste(temps, "Don't bring a jacket bc its warmer"))}
+}
+```
+
+### 1d###
+``` {r, 1d}
+for(temps in my_vector) {
+my_object3 <- (temps -32) * 5/9 
+if(my_object3 < 18) {print(paste(temps,"Don't forget a jacket bc cold"))}
+
+else if(my_object3 >= 23) {print(paste(temps, "Don't forget shorts"))}
+
+else if(my_object3 > 18 | my_object3 < 23) {print(paste(temps, "Don't need shorts or the jacket"))}
+}
+```
